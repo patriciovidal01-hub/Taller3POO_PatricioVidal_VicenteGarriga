@@ -12,7 +12,7 @@ private int daño;
 	
 	}
 
-	
+	public abstract String almacenarDatos();
 
 	public int getDaño() {
 		return daño;

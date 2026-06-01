@@ -292,7 +292,274 @@ public class Administrador implements Menu {
 					System.out.println("El mago: ¨"+ nombreMagoEliminar +"¨"+" ha sido eliminado exitosamente");
 					
 				}
+			} else if(opcion.equals("4")) {
+				//Ingresar opcion de Agregar hechizo y lo que se necesita.
+				
+				System.out.println("Ingresar nombre del nuevo Hechizo: ");
+				String nombreNuevoHechizo = lector.nextLine();
+				
+				//BLOQUE DE VERIFICACION
+				int dañoNuevoHechizo = 0;
+				boolean ingresoValido = false;
+					
+				while (ingresoValido == false) {
+						
+					try {
+						System.out.println("Ingresar daño del nuevo Hechizo: ");
+						System.out.println("---RECORDATORIO---");
+						System.out.println("Para que el juego tenga un equilibrio el hechizo no puede tener más de 200 de daño ni puede tener menos de 5 de daño.");	
+						System.out.println("El parametro solo recibe valores sin decimales (ejemplo: 10).");	
+						dañoNuevoHechizo = Integer.parseInt(lector.nextLine());
+							
+						while (dañoNuevoHechizo <= 4 || dañoNuevoHechizo >= 201) {
+							System.out.println("-----ERROR: VALOR INVALIDO-----");
+							System.out.println("---------RECORDATORIO---------");
+							System.out.println("Para que el juego tenga un equilibrio el hechizo no puede tener más de 200 de daño ni puede tener menos de 5 de daño. ");
+							System.out.println("El parametro solo recibe valores sin decimales (ejemplo: 10).");	
+							dañoNuevoHechizo = Integer.parseInt(lector.nextLine());
+							}
+							ingresoValido = true;
+							} 
+						
+					catch (Exception e) {
+						System.out.println("---REVALIDANDO VALORES---"); }
+						
+					}
+				
+				//TERMINO DE BLOQUE DE VERIFICACION
+				
+				System.out.println("Ingresar el Tipo de elemento del nuevo Hechizo: ");
+				System.out.println("1- Fuego (1)");
+				System.out.println("2- Tierra (2)");
+				System.out.println("3- Planta (3)");
+				System.out.println("4- Agua (4)");
+				
+				
+				String tipoNuevoHechizo = "";
+				int opcionNuevoHechizo = 0;				
+				ingresoValido = false;
+				
+				while (ingresoValido == false) {
+					
+					try {
+						System.out.println("Ingresar el Tipo de elemento del nuevo Hechizo: ");
+						opcionNuevoHechizo = Integer.parseInt(lector.nextLine());					
+						
+						while (opcionNuevoHechizo <= 0 || opcionNuevoHechizo > 4) {
+							System.out.println("-----ERROR: NUMERO INVALIDO-----");
+							System.out.println("Ingresar el Tipo de elemento del nuevo Hechizo: ");
+							opcionNuevoHechizo = Integer.parseInt(lector.nextLine());
+						}
+						ingresoValido = true;
+					} 
+					
+					catch (Exception e) {
+						System.out.println("---REVALIDANDO ELEMENTOS---");
+					}
+				}
+				//AQUI HAY QUE PEDIR LAS OPCIONES ESPECIALES POR CADA TIPO
+				System.out.println("----------CARGANDO ELEMENTOS-----------");
+				System.out.println("......................................");
+				
+				if (opcionNuevoHechizo == 1) {
+					//OPCION FUEGO
+					tipoNuevoHechizo = "Fuego";
+					int duracionQuemadura = 0;
+					ingresoValido = false;
+						
+					while (ingresoValido == false) {
+							
+						try {
+							System.out.println("Ingresar Duracion del Hechizo: "+ nombreNuevoHechizo);
+							System.out.println("---RECORDATORIO---");
+							System.out.println("Para que el juego tenga un equilibrio el hechizo no puede tener más de 10(s) de duracion ni puede tener menos de 1(s) de duracion.");	
+							System.out.println("El parametro solo recibe valores sin decimales (ejemplo: 10).");	
+							duracionQuemadura = Integer.parseInt(lector.nextLine());
+								
+							while (duracionQuemadura <= 0 || duracionQuemadura >= 11) {
+								System.out.println("-----ERROR: VALOR INVALIDO-----");
+								System.out.println("---------RECORDATORIO---------");
+								System.out.println("Para que el juego tenga un equilibrio el hechizo no puede tener más de 10(s) de duracion ni puede tener menos de 1(s) de duracion.");	
+								System.out.println("El parametro solo recibe valores sin decimales (ejemplo: 10).");	
+								duracionQuemadura = Integer.parseInt(lector.nextLine());
+								}
+								ingresoValido = true;
+								} 
+							
+						catch (Exception e) {
+							System.out.println("---REVALIDANDO VALORES---"); }
+							
+						}
+					
+					//Creacion del hechizo de fuego en cuestion
+					Hechizo hechizoNuevo = new Fuego(nombreNuevoHechizo,tipoNuevoHechizo,dañoNuevoHechizo,duracionQuemadura);
+					listadeHechizos.add(hechizoNuevo);
+					actualizarArchivoHechizo();
+				}
+				else if (opcionNuevoHechizo == 2) {
+					//OPCION TIERRA
+					tipoNuevoHechizo = "Tierra";
+					int mejoradefensa = 0;
+					ingresoValido = false;
+						
+					while (ingresoValido == false) {
+							
+						try {
+							System.out.println("Ingresar Mejora de Defensa del Hechizo: "+ nombreNuevoHechizo);
+							System.out.println("---RECORDATORIO---");
+							System.out.println("Para que el juego tenga un equilibrio el hechizo no puede tener más de 50 de mejora de defensa ni puede tener menos de 5 de mejora de defensa.");	
+							System.out.println("El parametro solo recibe valores sin decimales (ejemplo: 10).");	
+							mejoradefensa = Integer.parseInt(lector.nextLine());
+								
+							while (mejoradefensa <= 4 || mejoradefensa >= 51) {
+								System.out.println("-----ERROR: VALOR INVALIDO-----");
+								System.out.println("---------RECORDATORIO---------");
+								System.out.println("Para que el juego tenga un equilibrio el hechizo no puede tener más de 50 de mejora de defensa ni puede tener menos de 5 de mejora de defensa.");	
+								System.out.println("El parametro solo recibe valores sin decimales (ejemplo: 10).");	
+								mejoradefensa = Integer.parseInt(lector.nextLine());
+								}
+								ingresoValido = true;
+								} 
+							
+						catch (Exception e) {
+							System.out.println("---REVALIDANDO VALORES---"); }
+							
+						}
+					
+					//Creacion del hechizo de Tierra en cuestion
+					Hechizo hechizoNuevo = new Tierra(nombreNuevoHechizo,tipoNuevoHechizo,dañoNuevoHechizo,mejoradefensa);
+					listadeHechizos.add(hechizoNuevo);
+					actualizarArchivoHechizo();
+
+				}
+				else if (opcionNuevoHechizo == 3) {
+					//OPCION PLANTA
+					tipoNuevoHechizo = "Planta";
+					int cantStun = 0;
+					int cantPlantas = 0;
+					ingresoValido = false;
+					//VALIDACION DEL PARAMETRO DE STUN
+					while (ingresoValido == false) {
+							
+						try {
+							System.out.println("Ingresar Tiempo de Stun del Hechizo: "+ nombreNuevoHechizo);
+							System.out.println("---RECORDATORIO---");
+							System.out.println("Para que el juego tenga un equilibrio el hechizo no puede tener más de 5(s) de Stun ni puede tener menos de 1(s) de Stun.");	
+							System.out.println("El parametro solo recibe valores sin decimales (ejemplo: 10).");	
+							cantStun = Integer.parseInt(lector.nextLine());
+								
+							while (cantStun <= 0 || cantStun >= 6) {
+								System.out.println("-----ERROR: VALOR INVALIDO-----");
+								System.out.println("---------RECORDATORIO---------");
+								System.out.println("Para que el juego tenga un equilibrio el hechizo no puede tener más de 50 de mejora de defensa ni puede tener menos de 5 de mejora de defensa.");	
+								System.out.println("El parametro solo recibe valores sin decimales (ejemplo: 10).");	
+								cantStun = Integer.parseInt(lector.nextLine());
+								}
+								ingresoValido = true;
+								} 
+							
+						catch (Exception e) {
+							System.out.println("---REVALIDANDO VALORES---"); }
+							
+						}
+					ingresoValido = false;
+					//VALIDACION DEL PARAMETRO DE PLANTAS
+					while (ingresoValido == false) {
+							
+						try {
+							System.out.println("Ingresar Cantidad de Plantas del Hechizo: "+ nombreNuevoHechizo);
+							System.out.println("---RECORDATORIO---");
+							System.out.println("Para que el juego tenga un equilibrio el hechizo no puede tener más de 10 plantas ni puede tener menos de 1 planta.");	
+							System.out.println("El parametro solo recibe valores sin decimales (ejemplo: 10).");	
+							cantPlantas = Integer.parseInt(lector.nextLine());
+								
+							while (cantPlantas <= 0 || cantPlantas >= 11) {
+								System.out.println("-----ERROR: VALOR INVALIDO-----");
+								System.out.println("---------RECORDATORIO---------");
+								System.out.println("Para que el juego tenga un equilibrio el hechizo no puede tener más de 10 plantas ni puede tener menos de 1 planta.");	
+								System.out.println("El parametro solo recibe valores sin decimales (ejemplo: 10).");	
+								cantPlantas = Integer.parseInt(lector.nextLine());
+								}
+								ingresoValido = true;
+								} 
+							
+						catch (Exception e) {
+							System.out.println("---REVALIDANDO PLANTAS---"); }
+							
+						}
+					
+					//Creacion del hechizo de Planta en cuestion
+					Hechizo hechizoNuevo = new Planta(nombreNuevoHechizo,tipoNuevoHechizo,dañoNuevoHechizo,cantStun,cantPlantas);
+					listadeHechizos.add(hechizoNuevo);
+					actualizarArchivoHechizo();
+					
+				}
+				else if (opcionNuevoHechizo == 4) {
+					//OPCION AGUA
+					tipoNuevoHechizo = "Agua";
+					int cantCuracion = 0;
+					int presionAgua = 0;
+					ingresoValido = false;
+					//VALIDACION DEL PARAMETRO DE CURACION
+					while (ingresoValido == false) {
+							
+						try {
+							System.out.println("Ingresar Cantidad de Curacion del Hechizo: "+ nombreNuevoHechizo);
+							System.out.println("---RECORDATORIO---");
+							System.out.println("Para que el juego tenga un equilibrio el hechizo no puede tener más de 100 de Curacion ni puede tener menos de 1 de Curacion.");	
+							System.out.println("El parametro solo recibe valores sin decimales (ejemplo: 10).");	
+							cantCuracion = Integer.parseInt(lector.nextLine());
+								
+							while (cantCuracion <= 0 || cantCuracion >= 101) {
+								System.out.println("-----ERROR: VALOR INVALIDO-----");
+								System.out.println("---------RECORDATORIO---------");
+								System.out.println("Para que el juego tenga un equilibrio el hechizo no puede tener más de 50 de mejora de defensa ni puede tener menos de 5 de mejora de defensa.");	
+								System.out.println("El parametro solo recibe valores sin decimales (ejemplo: 10).");	
+								cantCuracion = Integer.parseInt(lector.nextLine());
+								}
+								ingresoValido = true;
+								} 
+							
+						catch (Exception e) {
+							System.out.println("---REVALIDANDO SANACIONES---"); }
+							
+						}
+					ingresoValido = false;
+					
+					//VALIDACION DEL PARAMETRO DE PRESION DEL AGUA 
+					while (ingresoValido == false) {
+							
+						try {
+							System.out.println("Ingresar la cantidad de Presion del Hechizo: "+ nombreNuevoHechizo);
+							System.out.println("---RECORDATORIO---");
+							System.out.println("Para que el juego tenga un equilibrio el hechizo no puede tener más de 600 de presion ni puede tener menos de 10 de presion.");	
+							System.out.println("El parametro solo recibe valores sin decimales (ejemplo: 10).");	
+							presionAgua = Integer.parseInt(lector.nextLine());
+								
+							while (presionAgua <= 9 || presionAgua >= 601) {
+								System.out.println("-----ERROR: VALOR INVALIDO-----");
+								System.out.println("---------RECORDATORIO---------");
+								System.out.println("Para que el juego tenga un equilibrio el hechizo no puede tener más de 600 de presion ni puede tener menos de 10 de presion.");	
+								System.out.println("El parametro solo recibe valores sin decimales (ejemplo: 10).");	
+								presionAgua = Integer.parseInt(lector.nextLine());
+								}
+								ingresoValido = true;
+								} 
+							
+						catch (Exception e) {
+							System.out.println("---REVALIDANDO PRESION---"); }
+							
+						}
+					
+					//Creacion del hechizo de Agua en cuestion
+					Hechizo hechizoNuevo = new Agua(nombreNuevoHechizo,tipoNuevoHechizo,dañoNuevoHechizo,cantCuracion,presionAgua);
+					listadeHechizos.add(hechizoNuevo);
+					actualizarArchivoHechizo();
+					
+				}
+				
 			}
+			
 				mostrarOpciones();
 				opcion = lector.nextLine();
 				}
@@ -331,4 +598,28 @@ public class Administrador implements Menu {
 		    System.out.println("Error al escribir el archivo");
 		}
 	}
+	
+	public void actualizarArchivoHechizo() {
+		try {
+		    BufferedWriter teclado = new BufferedWriter(new FileWriter("Hechizos.txt"));
+		    
+		    for (int i = 0; i < listadeHechizos.size(); i++) {
+				Hechizo hechizoActual = listadeHechizos.get(i);
+				
+				String convertirString = hechizoActual.almacenarDatos();
+				
+				teclado.write(convertirString);
+				teclado.newLine();
+			}
+		    
+		    //teclado.write("INSERTAR TEXTO");
+		    //teclado.newLine(); // Esto hace un salto de línea (un "Enter")
+		    
+		    teclado.close(); 
+		    
+		} catch (Exception e) {
+		    System.out.println("Error al escribir el archivo");
+		}
+	}
+	
 }
