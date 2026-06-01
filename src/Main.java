@@ -54,17 +54,116 @@ public class Main {
 		
 	}
 	
-	 
 	public static void cargarHechizos() {
-	
-		
-	}		
+		try {
+			File arch = new File("Hechizos.txt");
+		    Scanner lector = new Scanner(arch); 
+		            
+		    while (lector.hasNextLine()) { 
+		         String linea = lector.nextLine().trim(); 
+		         String[] partes = linea.split(";"); 
+		                
+		         for (int i = 0; i < partes.length; i++) {
+		             partes[i] = partes[i].trim();
+		             }
+				String nombreHechizo = partes[0];
+				String tipo = partes[1];
+				int daño = Integer.parseInt(partes[2]);
+				
+				if(tipo.equals("Fuego")) {
+					int dur_Quemadura   = Integer.parseInt(partes[3]);
+					
+					listaHechizos.add(new Fuego(nombreHechizo,tipo,daño,dur_Quemadura));
+				}
+				
+				else if(tipo.equals("Tierra")) {
+					int mejoraDefensa = Integer.parseInt(partes[3]);
+					
+					listaHechizos.add(new Tierra(nombreHechizo,tipo,daño,mejoraDefensa));
+					}
+				
+				else if(tipo.equals("Agua")) {
+					String[] partesExtra = partes[3].split(",");
+					
+					int cantCuracion = Integer.parseInt(partesExtra[0]);
+					int presionAgua = Integer.parseInt(partesExtra[1]);
+					
+					listaHechizos.add(new Agua(nombreHechizo,tipo,daño,cantCuracion,presionAgua));
+					}
+				
+				else if(tipo.equals("Planta")) {
+					String[] partesExtra = partes[3].split(",");
+					
+					int cantStun = Integer.parseInt(partesExtra[0]);
+					int cantPlantas = Integer.parseInt(partesExtra[1]);
+					
+					listaHechizos.add(new Planta(nombreHechizo,tipo,daño,cantStun,cantPlantas));
+					}
+				}
+			}
+			
+			catch (Exception e) {
+				System.out.println("ERROR 404");
+			}
+			
+		}		
 	
     
 
 	public static void cargarMagos() {
-		
+		try {
+			File arch = new File("Magos.txt");
+			Scanner lector = new Scanner(arch);
+			
+			 while (lector.hasNextLine()) { 
+		         String linea = lector.nextLine().trim(); 
+		         String[] partes = linea.split(";"); 
+		                
+		         for (int i = 0; i < partes.length; i++) {
+		             partes[i] = partes[i].trim();  }
+		        
+		        if (partes.length >1 ) {
+					
+				
+		        String nombreHechicero = partes[0]; 
+		        String habilidades = partes[1];
+		       		        
+		        String[] skills = habilidades.split("\\|");
+		        
+		        Hechicero maGordito = new Hechicero(nombreHechicero);		        
+		        for (int i = 0; i < skills.length; i++) {
+		        	String nombreHechizo = skills[i];
+		        	Hechizo hechizoActual = encontrarHechizo(nombreHechizo);
+		        	
+		        	if (hechizoActual != null) {
+		        		maGordito.agregarHechizo(hechizoActual);
+					}
+				}
+		        hechiceros.add(maGordito);
+			 }
+		        
+		     else if (partes.length <=1) { 
+		    	 System.out.println("Truco de Administrador encontrado, error desviado");}				 
+		} 
+			 
+		} catch (Exception e) {
+			System.out.println("ERROR 405");
+		}
+	         
 	}
+	
+	public static Hechizo encontrarHechizo(String hechizoDeseado) {
+		for(int i = 0; i < listaHechizos.size(); i++) {
+			Hechizo hechizoActual =  listaHechizos.get(i);
+			String nombreHechizo = hechizoActual.getNombreHechizo();
+
+				if(nombreHechizo.equals(hechizoDeseado)) {
+					return hechizoActual;
+				}
+			}
+		System.out.println("El hechizo no fue encontrado");
+		return null;
+		}
 }
 	
 
