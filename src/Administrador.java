@@ -65,42 +65,221 @@ public class Administrador implements Menu {
 					actualizarArchivoMagos();
 					System.out.println("Nuevo mago creado: Bienvenido ¨"+ nombreNuevoMago +"¨");
 					
-				}
+				} else if(opcion.equals("2")) {
+					if (listaHechiceros.isEmpty()) {
+						System.out.println("-------------AVISO-------------");
+						System.out.println("---NO HAY MAGOS DISPONIBLES---");
+					}
+					else {
+						int opcionModificar = 0;
+						Boolean ingresoValido = false;
+						
+						while (opcionModificar != 4) {	
+							ingresoValido = false;
+							System.out.println("----------ACCEDIENDO----------");
+							System.out.println("---¿QUE DESEA MODIFICAR?---");
+							System.out.println("1- Modificar Nombre");
+							System.out.println("2- Enseñar nuevo hechizo");
+							System.out.println("3- Olvidar hechizo");
+							System.out.println("4- Volver al menu principal");
+		
+							while (ingresoValido == false) {
+								
+								try {
+									System.out.println("Ingrese opcion: ");
+									opcionModificar = Integer.parseInt(lector.nextLine());
+									
+									while (opcionModificar <= 0 || opcionModificar > 4) {
+										System.out.println("-----ERROR: NUMERO INVALIDO-----");
+										System.out.println("1- Modificar Nombre");
+										System.out.println("2- Enseñar nuevo hechizo");
+										System.out.println("3- Olvidar hechizo");
+										System.out.println("4- Volver al menu principal");
+										System.out.println("Ingrese opcion: ");
+										
+										opcionModificar = Integer.parseInt(lector.nextLine());
+									}
+									ingresoValido = true;
+								} 
+								
+								catch (Exception e) {
+									System.out.println("-----REVALIDANDO DATOS-----");
+								}
+							}
+							if (opcionModificar != 4) {
+								
+								System.out.println("--------MAGOS--------");
+								for (int i = 0; i < listaHechiceros.size(); i++) {
+								System.out.println((i+1) +"-" +listaHechiceros.get(i).getNombre()); }
+								
+								int numeroMagoModificado = 0;
+								ingresoValido = false;
+								
+								while (ingresoValido == false) {
+									
+									try {
+										System.out.println("Ingrese numero del mago a Modificar: ");
+										numeroMagoModificado = Integer.parseInt(lector.nextLine());
+										
+										while (numeroMagoModificado <= 0 || numeroMagoModificado >= listaHechiceros.size()+ 1) {
+											System.out.println("-----ERROR: NUMERO INVALIDO-----");
+											System.out.println("Ingrese numero del mago a Modificar");
+											numeroMagoModificado = Integer.parseInt(lector.nextLine());
+										}
+										ingresoValido = true;
+									} 
+									
+									catch (Exception e) {
+										System.out.println("---REVALIDANDO---");
+									}
+								}
+								
+								Hechicero magoModificado = listaHechiceros.get(numeroMagoModificado-1);
+								String nombreMagoModificado= magoModificado.getNombre();
+								
+								
+								System.out.println("---------------CARGANDO---------------");
+								System.out.println("......................................");
+								
+								//BLOQUE DE LAS OPCIONES DE MODIFICAR
+								
+								if (opcionModificar == 1) {
+									
+									System.out.println("Ingresar nuevo nombre: ");
+									String nombreNuevoMagoModificado = lector.nextLine();
+									String nombreAntiguoMagoModificado = nombreMagoModificado;
+									
+									System.out.println("---------------CARGANDO---------------");
+									magoModificado.setNombre(nombreNuevoMagoModificado);
+									System.out.println(nombreAntiguoMagoModificado +" --------> "+ nombreNuevoMagoModificado);
+																
+									actualizarArchivoMagos();
+									}
+								else if (opcionModificar == 2) {
+									
+									System.out.println("--------HECHIZOS--------");
+									for (int i = 0; i < listadeHechizos.size(); i++) {
+										System.out.println((i+1) +"-" +listadeHechizos.get(i).getNombreHechizo()+" ");
+										}
+									
+									int hechizoSeleccionado = 0;
+									ingresoValido = false;
+									
+									while (ingresoValido == false) {
+										
+										try {
+											System.out.println("Ingrese numero del Hechizo a enseñar: ");
+											hechizoSeleccionado = Integer.parseInt(lector.nextLine());
+											
+											while (hechizoSeleccionado <= 0 || hechizoSeleccionado >= listadeHechizos.size()+ 1) {
+												System.out.println("-----ERROR: NUMERO INVALIDO-----");
+												System.out.println("Ingrese numero del Hechizo a enseñar: ");
+												hechizoSeleccionado = Integer.parseInt(lector.nextLine());
+												}
+											ingresoValido = true;
+											} 
+										
+										catch (Exception e) {
+											System.out.println("---REVALIDANDO HECHIZOS---"); }
+										
+										}
+									
+										Hechizo hechizoEnseñar = listadeHechizos.get(hechizoSeleccionado-1);
+										String nombreHechizoEnseñar= hechizoEnseñar.getNombreHechizo();
+										
+										magoModificado.agregarHechizo(hechizoEnseñar);
+										
+										System.out.println("El mago "+ nombreMagoModificado + " ha aprendido "+ nombreHechizoEnseñar + " con exito");
+										actualizarArchivoMagos();
+									
+								}
+							
+							else if (opcionModificar == 3) {
+								//Ingresar modificacion de olvidar hechizo
+								ArrayList<Hechizo> hechizosMagoModificado = magoModificado.getHechizos();
+								
+								System.out.println("--------HECHIZOS DEL MAGO--------");
+								for (int i = 0; i < hechizosMagoModificado.size(); i++) {
+									System.out.println((i+1) +"-" + hechizosMagoModificado.get(i).getNombreHechizo()+" ");
+									}
+									
+								int hechizoSeleccionado = 0;
+								ingresoValido = false;
+									
+								while (ingresoValido == false) {
+										
+									try {
+										System.out.println("Ingrese numero del Hechizo a olvidar: ");
+										hechizoSeleccionado = Integer.parseInt(lector.nextLine());
+											
+										while (hechizoSeleccionado <= 0 || hechizoSeleccionado >= hechizosMagoModificado.size()+ 1) {
+											System.out.println("-----ERROR: NUMERO INVALIDO-----");
+											System.out.println("Ingrese numero del Hechizo a olvidar: ");
+											hechizoSeleccionado = Integer.parseInt(lector.nextLine());
+											}
+											ingresoValido = true;
+											} 
+										
+									catch (Exception e) {
+										System.out.println("---REVALIDANDO HECHIZOS---"); }
+										
+									}
+									
+								Hechizo hechizoOlvidar = hechizosMagoModificado.get(hechizoSeleccionado-1);
+								String nombreHechizoOlvidar = hechizoOlvidar.getNombreHechizo();
+								
+								hechizosMagoModificado.remove(hechizoSeleccionado-1);
+								
+								System.out.println("El mago "+ magoModificado.getNombre() + " ha olvidado "+ nombreHechizoOlvidar + " con exito");
+								actualizarArchivoMagos();	
+
+							}
+						}						
+					}
+				System.out.println("---Volviendo al Menu Principal---");
+			}
+		}			
+					}
 			}
 			
-		} catch (Exception e) {
-			System.out.println("PROBLEMA INESPERADO");
-		}
-		System.out.println("---CERRANDO MENU ADMINISTRADOR---");
+		}catch(
+
+	Exception e)
+	{
+		System.out.println("PROBLEMA INESPERADO");
+	}System.out.println("---CERRANDO MENU ADMINISTRADOR---");
 	}
-	
-	
+
 	public void actualizarArchivoMagos() {
 		try {
-		    BufferedWriter teclado = new BufferedWriter(new FileWriter("Magos.txt"));
-		    
-		    for (int i = 0; i < listaHechiceros.size(); i++) {
+			BufferedWriter teclado = new BufferedWriter(new FileWriter("Magos.txt"));
+
+			for (int i = 0; i < listaHechiceros.size(); i++) {
 				Hechicero hechiceroActual = listaHechiceros.get(i);
 				String nombreActual = hechiceroActual.getNombre();
 				int largoHechizos = hechiceroActual.getHechizos().size();
-				String convertirString = "" + nombreActual+";";
-				
+				String convertirString = "" + nombreActual + ";";
+
 				for (int j = 0; j < largoHechizos; j++) {
 					Hechizo hechizoActual = hechiceroActual.getHechizos().get(j);
-					
-					if (j == 0) { convertirString += hechizoActual.getNombreHechizo(); }
-					
-					else { convertirString += "|" + hechizoActual.getNombreHechizo(); } 
+
+					if (j == 0) {
+						convertirString += hechizoActual.getNombreHechizo();
+					}
+
+					else {
+						convertirString += "|" + hechizoActual.getNombreHechizo();
+					}
 				}
 				teclado.write(convertirString);
 				teclado.newLine();
-				//TERMINAR LOGICA DE REESCRIBIR EL ARCHIVO TXT DE MAGOS
+				// TERMINAR LOGICA DE REESCRIBIR EL ARCHIVO TXT DE MAGOS
 			}
-		    
-		    teclado.close(); 
-		    
+
+			teclado.close();
+
 		} catch (Exception e) {
-		    System.out.println("Error al escribir el archivo");
+			System.out.println("Error al escribir el archivo");
 		}
 	}
 }
