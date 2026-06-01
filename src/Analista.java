@@ -90,9 +90,101 @@ public class Analista implements Menu {
 						System.out.println("---------------ERROR---------------");
 						System.out.println("--------NO EXISTEN HECHIZOS--------");
 					}
+
+					else if (opcion.equals("2")) {
+						// AÑADIR PARAMETRO DE SEGURIDAD
+						System.out.println("---LOS 3 PRIMEROS MAGOS---");
+
+						if (listaHechiceros.size() >= 3) {
+							for (int i = 0; i < 3; i++) { // : listaHechiceros.get(i).getPuntuacion()
+								System.out.println(
+										(i + 1) + "- " + "El Hechicero " + listaHechiceros.get(i).getNombre() + " ");
+							}
+						}
+
+						else if (listaHechiceros.size() < 3 && listaHechiceros.size() >= 1) {
+
+							int limite = listaHechiceros.size();
+
+							System.out.println("-------------------------AVISO-------------------------");
+							System.out.println("Solamente hay " + limite + " Hechiceros");
+
+							if (listaHechiceros.size() == 1) {
+								System.out.println("---El PRIMER Y UNICO HECHICERO ES---");
+								for (int i = 0; i < limite; i++) {
+									System.out.println((i + 1) + "- " + listaHechiceros.get(i).getNombre() + " ");
+								}
+							}
+
+							else {
+								System.out.println("---LOS PRIMEROS " + limite + " HECHICEROS SON---");
+								for (int i = 0; i < limite; i++) {
+									System.out.println((i + 1) + "- " + listaHechiceros.get(i).getNombre() + " ");
+								}
+							}
+						}
+					} else if (opcion.equals("3")) {
+
+						System.out.println("---MOSTRANDO TODOS LOS HECHIZOS---");
+
+						if (listadeHechizos.isEmpty()) {
+							System.out.println("-----ERROR NO HAY HECHIZOS-----");
+						}
+
+						else {
+
+							for (int i = 0; i < listadeHechizos.size(); i++) {
+								System.out.println(listadeHechizos.get(i).getNombreHechizo() + " ");
+							}
+						}
+					}
+
+					else if (opcion.equals("4")) {
+
+						System.out.println("---MOSTRANDO TODOS LOS MAGOS---");
+						if (listaHechiceros.isEmpty()) {
+							System.out.println("-----ERROR NO HAY MAGOS-----");
+						}
+
+						else {
+							for (int i = 0; i < listaHechiceros.size(); i++) {
+								System.out.println((i + 1) + "- " + listaHechiceros.get(i).getNombre() + " ");
+							}
+						}
+
+					} else if (opcion.equals("5")) {
+
+						System.out.println("---MOSTRANDO TODOS LOS HECHIZOS Y SU PUNTAJE---");
+
+						if (listadeHechizos.isEmpty()) {
+							System.out.println("-----ERROR NO HAY HECHIZOS-----");
+						}
+
+						else {
+							for (int i = 0; i < listadeHechizos.size(); i++) {
+								System.out.println((i + 1) + "- " + "" + listadeHechizos.get(i).getNombreHechizo()
+										+ " : " + listadeHechizos.get(i).calcularPuntaje() + "");
+							}
+						}
+					} else if (opcion.equals("6")) {
+
+						if (listaHechiceros.isEmpty()) {
+							System.out.println("-----ERROR NO HAY MAGOS-----");
+						} else {
+							System.out.println("---MOSTRANDO TODOS LOS MAGOS Y SU PUNTAJE---");
+							for (int i = 0; i < listaHechiceros.size(); i++) {
+								System.out.println((i + 1) + "-" + listaHechiceros.get(i).getNombre() + " : "
+										+ listaHechiceros.get(i).getPuntuacion());
+							}
+						}
+					}
+
+					else if (opcion.equals("7")) {
+						break;
+					}
 				}
-			mostrarOpciones();
-			opcion = lector.nextLine();
+				mostrarOpciones();
+				opcion = lector.nextLine();
 			}
 
 		} catch (Exception e) {
