@@ -1,5 +1,5 @@
 
-abstract class Hechizo {
+abstract class Hechizo implements Puntuacion{
 private String nombreHechizo;
 private String tipo;
 private int daño;
@@ -42,6 +42,6 @@ private int daño;
 		this.tipo = tipo;
 	}
 	
-
+	public abstract double calcularPuntaje();
 
 }

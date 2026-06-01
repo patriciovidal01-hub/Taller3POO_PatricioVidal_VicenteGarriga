@@ -29,6 +29,18 @@ private int cantPlantas;
 	}
 	
 
+	public double calcularPuntaje() {
+		double puntaje =  (getDaño() + getCantStun() * getCantPlantas());
+		return puntaje;
 
+	}
+
+	
+	public String almacenarDatos() {
+		String datos = "" + getNombreHechizo() + ";" + getTipo() + ";" + getDaño() + ";" + cantStun + "," + cantPlantas;
+		return datos;
+	}
+
+	
 
 }

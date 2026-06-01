@@ -139,6 +139,7 @@ public class Main {
 		        		maGordito.agregarHechizo(hechizoActual);
 					}
 				}
+		        maGordito.puntuacionHechizero();
 		        hechiceros.add(maGordito);
 			 }
 		        

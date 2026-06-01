@@ -20,5 +20,15 @@ private int mejoraDefensa;
 	
   
 
+	public double calcularPuntaje() {
+		double puntaje = ((getDaño()*getMejoraDefensa())/2);
+		return puntaje;
+	}
+	
 
+	public String almacenarDatos() {
+		String datos = "" + getNombreHechizo() + ";" + getTipo() + ";" + getDaño() + ";" + mejoraDefensa;
+		return datos;
+	}
+	
 }

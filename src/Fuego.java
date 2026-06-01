@@ -16,6 +16,17 @@ private int dur_Quemadura;
 	public void setDur_Quemadura(int dur_Quemadura) {
 		this.dur_Quemadura = dur_Quemadura;
 	}
+
+	public double calcularPuntaje() {
+		double puntaje = getDaño()*getDur_Quemadura();
+		return puntaje;
+
+	}
 	
+	
+	public String almacenarDatos() {
+		String datos = "" + getNombreHechizo() + ";" + getTipo() + ";" + getDaño() + ";" + dur_Quemadura;
+		return datos;
+	}
 
 }

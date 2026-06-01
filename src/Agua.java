@@ -29,6 +29,18 @@ private int presionAgua;
 	public void setPresionAgua(int presionAgua) {
 		this.presionAgua = presionAgua;
 	}
+	
+	
 
+	public double calcularPuntaje() {
+		double puntaje = (( getDaño() + getCantCuracion() + getPresionAgua() )*2);
+		return puntaje;
+	}
+
+
+	public String almacenarDatos() {
+		String datos = "" + getNombreHechizo() + ";" + getTipo() + ";" + getDaño() + ";" + cantCuracion + "," + presionAgua;
+		return datos;
+	}
 
 }
