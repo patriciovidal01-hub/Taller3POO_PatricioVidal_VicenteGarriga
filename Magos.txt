@@ -1,0 +1,16 @@
+Papulini;Fuego Sagrado|Absorber|Infierno
+Ferran;Salmuera|Envite Igneo|Disparo Lodo|Poder Pasado|Rueda Fuego|Hidroariete|Burbuja
+MartinNegro;Acua Aro|Tumba Rocas|Polen Somnífero|Escaldar|Disparo Lodo|Cascada|Pirotecnia
+MartinAyudanteHermoso;Disparo Lodo|Salmuera|Colmillo Igneo|Excavar|Calcinación
+Estefania;Hoja Afilada|Burbuja|Acua Jet|Energibola|Fuego Sagrado|Agua Lodosa|Llamarada Azul
+Rabi;Latigazo|Absorber|Vórtice Ígneo|Avalancha|Rueda Fuego|Tormenta de Arena
+Sasa;Infierno|Martillazo|Hidroariete|Envite Igneo
+EmaArdillaRabiosa;Origen Pulso|Fuego Sagrado|Cascada|Llamarada Azul
+Nilo;Patada Ígnea|Acua Jet|Huesomerang|Clorofila|Fogonazo|Polen Somnífero|Torbellino
+Clapt;Pulso de Agua|Giro Fuego|Pedrada
+Danini;Fuego Sagrado|Pedrada|Envite Igneo|Hierba Lazo|Surf
+Mul;Gigadrenado|Rayo Burbuja|Danza Lluvia|Pistola Agua
+Maxi;Explosión Ígnea|Envite Igneo|Agua Lodosa
+Pruno;Sofoco|Disparo Lodo|Pirotecnia|Vórtice Ígneo
+Churrasquita;Origen Pulso|Infierno|Silvato|Hoja Mágica|Colmillo Igneo
+Branco;Arraigo|Silvato|Danza Lluvia
