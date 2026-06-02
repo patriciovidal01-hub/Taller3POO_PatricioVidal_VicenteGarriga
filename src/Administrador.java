@@ -589,7 +589,7 @@ public class Administrador implements Menu {
 						} else {
 
 							int opcionModificar = 0;
-							Boolean ingresoValido = false;
+							boolean ingresoValido = false;
 							// CICLO DEL MENU
 							while (opcionModificar != 7) {
 
@@ -1193,7 +1193,62 @@ public class Administrador implements Menu {
 							}
 
 						}
+					} else if(opcion.equals("6")) {
+						//Ingresar opcion de Eliminar hechizo y lo que se requiere.
+						if (listadeHechizos.isEmpty()) {
+							System.out.println("--------------AVISO--------------");
+							System.out.println("---NO HAY HECHIZOS DISPONIBLES---");
+						}
+						else {
+							
+						
+						for (int i = 0; i < listadeHechizos.size(); i++) {
+							System.out.println((i+1) +"-" +listadeHechizos.get(i).getNombreHechizo());
+						}
+						int numeroHechizoEliminar = 0;
+						Boolean ingresoValido = false;
+						
+						while (ingresoValido == false) {							
+							try {
+								System.out.println("Ingrese numero del Hechizo a Eliminar");
+								numeroHechizoEliminar = Integer.parseInt(lector.nextLine());
+								
+								while (numeroHechizoEliminar <= 0 || numeroHechizoEliminar >= listadeHechizos.size()+ 1) {
+									System.out.println("-----ERROR: NUMERO INVALIDO-----");
+									System.out.println("Ingrese numero del Hechizo a Eliminar");
+									numeroHechizoEliminar = Integer.parseInt(lector.nextLine());
+								}
+								ingresoValido = true;
+							} 
+							
+							catch (Exception e) {
+								System.out.println("---REVALIDANDO---");
+							}
+						}
+
+						Hechizo hechizoEliminar = listadeHechizos.get(numeroHechizoEliminar-1);
+						String nombreHechizoEliminar= hechizoEliminar.getNombreHechizo();
+						
+						System.out.println("---------------CARGANDO---------------");
+						System.out.println("......................................");
+										
+						for (Hechicero hechicero : listaHechiceros) {
+							if (hechicero.getHechizos().contains(hechizoEliminar)) {
+								int posicion2 = hechicero.getHechizos().indexOf(hechizoEliminar);
+								hechicero.getHechizos().remove(posicion2);
+							}
+						}
+						listadeHechizos.remove(numeroHechizoEliminar-1);
+						actualizarArchivoHechizo();
+						actualizarArchivoMagos();
+						System.out.println("El Hechizo: ¨"+ nombreHechizoEliminar +"¨"+" ha sido eliminado exitosamente");
+
+						
+						}
 					}
+					else if(opcion.equals("7")) {
+						break;
+						}
 
 				}
 
