@@ -11,8 +11,8 @@ Magnitud;Tierra;144;16
 Hidrobomba;Agua;106;74,392
 Agua Lodosa;Agua;62;39,429
 Avalancha;Tierra;131;16
-Escaldar;Agua;110;45,360
 Tormenta de Arena;Tierra;103;20
+Escaldar;Agua;110;45,360
 Salmuera;Agua;61;26,402
 Pulso de Agua;Agua;35;24,415
 Cascada;Agua;44;1,398
@@ -22,8 +22,8 @@ Acua Jet;Agua;92;32,252
 Inmersión;Agua;55;78,242
 Surf;Agua;31;76,267
 Concha Filo;Agua;97;12,264
-Romperrocas;Tierra;131;11
 Rayo Burbuja;Agua;53;65,242
+Romperrocas;Tierra;131;11
 Hueso Palo;Tierra;40;35
 Disparo Lodo;Tierra;48;29
 Burbuja;Agua;24;29,292

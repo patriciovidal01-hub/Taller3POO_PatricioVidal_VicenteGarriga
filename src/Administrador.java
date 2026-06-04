@@ -3,13 +3,22 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
+/**
+ * Es el panel de menu del rol Administrador, este permite gestionar el sistema mediante 
+ * operaciones CRUD (Crear, Leer, Actualizar y Eliminar): Borrando y creando registros sobre magos y hechizos, 
+ * con persistencia en los archivos .txt.
+ * Implementa la interfaz Menu.
+ * además que tiene una conexion con la lista principal de hechiceros y magos del main
+ */
 public class Administrador implements Menu {
 	ArrayList<Hechizo> listadeHechizos = Main.listaHechizos;
 	ArrayList<Hechicero> listaHechiceros = Main.hechiceros;
 	Scanner lector = new Scanner(System.in);
 	
-
+    /**
+     * Muestra en consola el menú de opciones disponibles para el Administrador.
+     */
+	@Override
 	public void mostrarOpciones() {
 		//POTENCIAL IMPLEMENTACION DE ORDENAMIENTO EN MOSTRAR OPCIONES
 		System.out.println("---------------------------ADMINISTRADOR--------------------------");
@@ -24,8 +33,13 @@ public class Administrador implements Menu {
 
 	}
 
-
-
+	/**
+     * Antes de ejecutar la opcion ordena las listas de hechizos y hechiceros por puntuación de 
+     * mayor a menor, luego ejecuta el ciclo principal del menú Administrador, 
+     * procesando las opciones del usuario entre ellas agregar, modificar, eliminar 
+     * tanto en magos como con hechizos, hasta que elige salir (opción 7).
+     */
+	@Override
 	public void ejecutarOpcion() {
 		try {
 			
@@ -1179,6 +1193,13 @@ public class Administrador implements Menu {
 	System.out.println("---CERRANDO MENU ADMINISTRADOR---");
 	}
 	
+	 /**
+     * Esta funcion es fundamental ya que sobrescribe el archivo Magos.txt con la informacion 
+     * actual de la lista de hechiceros, al igual que el archivo original mantiene el formato: 
+     * NombreMago;Hechizo1|Hechizo2|HechizoBN
+     * además Se llama tras cualquier operación que modifique magos o sus hechizos.
+     * de esta manera reflejando los cambios que se apliquen en administrador.
+     */
 	public void actualizarArchivoMagos() {
 		try {
 		    BufferedWriter teclado = new BufferedWriter(new FileWriter("Magos.txt"));
@@ -1208,6 +1229,14 @@ public class Administrador implements Menu {
 		}
 	}
 
+	/**
+     * Esta funcion es fundamental ya que sobrescribe el archivo Hechizos.txt con la informacion 
+     * actual de la lista de hechizos, al igual que el archivo original mantiene el formato: 
+     * NombreHechizo;Planta;Daño;[Parametros de clase] para hacer esto
+     * Usa el método almacenarDatos() de cada hechizo para mantener el formato correcto.
+     * además Se llama tras cualquier operación que modifique hechizos para.
+     * de esta manera permite reflejar los cambios que se apliquen en administrador
+     */
 	public void actualizarArchivoHechizo() {
 		try {
 		    BufferedWriter teclado = new BufferedWriter(new FileWriter("Hechizos.txt"));
@@ -1231,7 +1260,14 @@ public class Administrador implements Menu {
 		}
 	}
 	
-	
+	/**
+     * esta funcion es usada para solicitar y validar al usuario la opción de 
+     * mutación elemental (1, 2 o 3).
+     * Repite la solicitud hasta recibir un valor entero dentro del rango válido.
+     *
+     * @param nombreHechizo el nombre del hechizo que se está mutando (solo para mostrar en consola).
+     * @return la opción válida ingresada por el usuario (1, 2 o 3).
+     */
 public int verificarOpcionMutacion(String nombreHechizo) {
 	boolean ingresoValido = false;	
 	int opcion = 0;
@@ -1260,7 +1296,14 @@ public int verificarOpcionMutacion(String nombreHechizo) {
 	
 	}
 
-	
+	/**
+	 * Solicita y valida al usuario un valor de duración de quemadura para un hechizo de Fuego.
+	 * El valor debe estar entre 1 y 10 segundos.
+	 * Repite la solicitud hasta recibir un valor válido.
+	 *
+	 * @param nombreHechizo el nombre del hechizo (para mostrar en el mensaje de solicitud).
+	 * @return la duración de quemadura válida ingresada por el usuario.
+	 */
 public int obtenerQuemaduraNueva(String nombreHechizo) {
 	int duracionQuemadura = 0;
 	boolean ingresoValido = false;
@@ -1291,7 +1334,14 @@ public int obtenerQuemaduraNueva(String nombreHechizo) {
 	return duracionQuemadura;
 }
 
-
+ /**
+ * Solicita y valida al usuario un valor de mejora de defensa para un hechizo de Tierra.
+ * El valor debe estar entre 5 y 50 inclusive.
+ * Repite la solicitud hasta recibir un valor válido.
+ *
+ * @param nombreHechizo el nombre del hechizo (para mostrar en el mensaje de solicitud).
+ * @return el valor de mejora de defensa válido ingresado por el usuario.
+ */
 public int obtenerDefensaNueva(String nombreHechizo) {
 	int mejoraDefensa = 0;
 	boolean ingresoValido = false;
@@ -1322,7 +1372,14 @@ public int obtenerDefensaNueva(String nombreHechizo) {
 	return mejoraDefensa;
 }
 
-
+ /**
+ * Solicita y valida al usuario los dos parámetros de un hechizo de Planta:
+ * duración del stun (1 a 5 segundos) y cantidad de plantas (1 a 10).
+ * Repite cada solicitud hasta recibir valores válidos.
+ *
+ * @param nombreHechizoModificar el nombre del hechizo (para mostrar en los mensajes).
+ * @return arreglo de dos enteros: posicion[0] = cantStun, posicion[1] = cantPlantas.
+ */
 public int[] obtenerDatosPlantaNuevos(String nombreHechizoModificar) {
 	//BLOQUE DE SEGURIDAD DE STUN
 	boolean ingresoValido = false;	
@@ -1385,7 +1442,14 @@ public int[] obtenerDatosPlantaNuevos(String nombreHechizoModificar) {
 	return datosPlanta;
 	}
 
- 
+ /**
+ * Solicita y valida al usuario los dos parámetros de un hechizo de Agua:
+ * cantidad de curación (1 a 100) y presión del agua (10 a 600).
+ * Repite cada solicitud hasta recibir valores válidos.
+ *
+ * @param nombreHechizoModificar el nombre del hechizo (para mostrar en los mensajes).
+ * @return arreglo de dos enteros: posicion[0] = cantCuracion, posicion[1] = presionAgua.
+ */
 public int[] obtenerDatosAguaNuevos(String nombreHechizoModificar) {
 	//BLOQUE DE SEGURIDAD DE STUN
 	int cantCuracion = 0;
@@ -1446,7 +1510,13 @@ public int[] obtenerDatosAguaNuevos(String nombreHechizoModificar) {
 	datosAgua[1] = presionAgua;
 	return datosAgua;
 	}
-
+/**
+ * Reemplaza un hechizo en la lista global de hechizos y en todos los hechiceros que lo posean,
+ * luego actualiza ambos archivos .txt.
+ *
+ * @param hechizoModificar el hechizo original que se desea reemplazar.
+ * @param mutacion         el nuevo hechizo que reemplazará al original.
+ */
 public void aplicarMutacion(Hechizo hechizoModificar, Hechizo mutacion) {
 	
 	int posicion = listadeHechizos.indexOf(hechizoModificar);

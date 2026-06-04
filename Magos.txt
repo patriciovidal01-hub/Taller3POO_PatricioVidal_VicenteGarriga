@@ -1,4 +1,3 @@
-Papulini;Fuego Sagrado|Absorber|Infierno
 Ferran;Salmuera|Envite Igneo|Disparo Lodo|Poder Pasado|Rueda Fuego|Hidroariete|Burbuja
 MartinNegro;Acua Aro|Tumba Rocas|Polen Somnífero|Escaldar|Disparo Lodo|Cascada|Pirotecnia
 MartinAyudanteHermoso;Disparo Lodo|Salmuera|Colmillo Igneo|Excavar|Calcinación
@@ -14,3 +13,4 @@ Maxi;Explosión Ígnea|Envite Igneo|Agua Lodosa
 Pruno;Sofoco|Disparo Lodo|Pirotecnia|Vórtice Ígneo
 Churrasquita;Origen Pulso|Infierno|Silvato|Hoja Mágica|Colmillo Igneo
 Branco;Arraigo|Silvato|Danza Lluvia
+Papulini;Fuego Sagrado|Absorber|Infierno

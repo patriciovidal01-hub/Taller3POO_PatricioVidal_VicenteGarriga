@@ -1,10 +1,17 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
+/**
+ * Es el panel de menu Analista, este permite consultar información del sistema, tales como
+ * rankings de hechizos y magos, y los listados con sus puntuaciones.
+ * ademas este menu Implementa la interfaz Menu.
+ */
 public class Analista implements Menu {
 
-	
+	/**
+     * Muestra en consola el menú de opciones disponibles para el men Analista.
+     */
+	@Override
 	public void mostrarOpciones() {
 		//POTENCIAL IMPLEMENTACION DE ORDENAMIENTO EN MOSTRAR OPCIONES
 		System.out.println("---------------------------ANALISTA--------------------------");
@@ -19,6 +26,12 @@ public class Analista implements Menu {
 
 	}
 	
+    /**
+     * Antes de ejecutar la opcion ordena las listas de hechizos y hechiceros por puntuación de mayor a menor,
+     * luego lee la opción del usuario y ejecuta la lógica correspondiente en un ciclo
+     * hasta que el usuario elige salir que seria la opción 7.
+     */
+	@Override
 	public void ejecutarOpcion() {
 		ArrayList<Hechizo> listadeHechizos = Main.listaHechizos;
 		ArrayList<Hechicero> listaHechiceros = Main.hechiceros;
