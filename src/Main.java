@@ -1,3 +1,6 @@
+// Vicente Garriga 22.380.392-K ICCI
+// Patricio Vidal  22.330.827-9 ICCI
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -21,8 +24,6 @@ public class Main {
      * @param args.
      */
 	public static void main(String[] args) {
-		// Vicente Garriga 22.380.392-K ICCI
-		// Patricio Vidal  22.330.827-9 ICCI
 		cargarHechizos();
 		cargarMagos();
 		Scanner lector = new Scanner(System.in);

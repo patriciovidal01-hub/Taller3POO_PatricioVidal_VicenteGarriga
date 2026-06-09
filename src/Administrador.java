@@ -11,8 +11,8 @@ import java.util.Scanner;
  * además que tiene una conexion con la lista principal de hechiceros y magos del main
  */
 public class Administrador implements Menu {
-	ArrayList<Hechizo> listadeHechizos = Main.listaHechizos;
-	ArrayList<Hechicero> listaHechiceros = Main.hechiceros;
+	private ArrayList<Hechizo> listadeHechizos = Main.listaHechizos;
+	private ArrayList<Hechicero> listaHechiceros = Main.hechiceros;
 	Scanner lector = new Scanner(System.in);
 	
     /**

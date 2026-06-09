@@ -1,9 +1,9 @@
 Ferran;Salmuera|Envite Igneo|Disparo Lodo|Poder Pasado|Rueda Fuego|Hidroariete|Burbuja
 MartinNegro;Acua Aro|Tumba Rocas|Polen Somnífero|Escaldar|Disparo Lodo|Cascada|Pirotecnia
-MartinAyudanteHermoso;Disparo Lodo|Salmuera|Colmillo Igneo|Excavar|Calcinación
 Estefania;Hoja Afilada|Burbuja|Acua Jet|Energibola|Fuego Sagrado|Agua Lodosa|Llamarada Azul
 Rabi;Latigazo|Absorber|Vórtice Ígneo|Avalancha|Rueda Fuego|Tormenta de Arena
 Sasa;Infierno|Martillazo|Hidroariete|Envite Igneo
+MartinAyudanteHermoso;Disparo Lodo|Salmuera|Colmillo Igneo|Calcinación
 EmaArdillaRabiosa;Origen Pulso|Fuego Sagrado|Cascada|Llamarada Azul
 Nilo;Patada Ígnea|Acua Jet|Huesomerang|Clorofila|Fogonazo|Polen Somnífero|Torbellino
 Clapt;Pulso de Agua|Giro Fuego|Pedrada
